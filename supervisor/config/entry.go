@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/gogf/gf/container/gmap"
-	"github.com/gogf/gf/container/gvar"
+	"github.com/gogf/gf/v2/container/gmap"
+	"github.com/gogf/gf/v2/container/gvar"
 )
 
 type Entry struct {

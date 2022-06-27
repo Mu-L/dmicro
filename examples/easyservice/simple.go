@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"github.com/osgochina/dmicro/easyservice"
 	"github.com/osgochina/dmicro/logger"
@@ -13,6 +14,6 @@ func main() {
 			fmt.Println("server stop")
 			return true
 		})
-		logger.Debug("test debug")
+		logger.Debug(context.TODO(), "test debug")
 	})
 }

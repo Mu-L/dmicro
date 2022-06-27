@@ -9,7 +9,7 @@
 其中`drpc`组件参考`erpc`项目的架构思想，依赖的基础库是`GoFrame`。
 
 * [erpc](https://github.com/henrylee2cn/erpc)
-* [GoFrame](https://github.com/gogf/gf)
+* [GoFrame](https://github.com/gogf/gf/v2)
 
 ## 详细文档
 

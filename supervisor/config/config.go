@@ -1,11 +1,12 @@
 package config
 
 import (
+	"context"
 	"fmt"
-	"github.com/gogf/gf/container/gmap"
-	"github.com/gogf/gf/errors/gerror"
-	"github.com/gogf/gf/frame/g"
-	"github.com/gogf/gf/os/gfile"
+	"github.com/gogf/gf/v2/container/gmap"
+	"github.com/gogf/gf/v2/errors/gerror"
+	"github.com/gogf/gf/v2/frame/g"
+	"github.com/gogf/gf/v2/os/gfile"
 	"github.com/osgochina/dmicro/logger"
 	"path/filepath"
 	"strings"
@@ -67,7 +68,7 @@ func (that *Config) parseProgram(programName string, data map[string]interface{}
 	originalProcName := programName
 	procName := keyValues.GetVar("process_name").String()
 	if numProcess > 1 && strings.Index(procName, "%(process_num)") == -1 {
-		logger.Errorf("no process_num[%d] in process name[%s]", numProcess, procName)
+		logger.Errorf(context.TODO(), "no process_num[%d] in process name[%s]", numProcess, procName)
 	}
 	if len(procName) > 0 {
 		originalProcName = procName
@@ -92,14 +93,14 @@ func (that *Config) parseProgram(programName string, data map[string]interface{}
 		}
 		cmd, err := pne.Eval(originalCmd)
 		if err != nil {
-			logger.Errorf("program [%s] get envs failed.err:%v", programName, err)
+			logger.Errorf(context.TODO(), "program [%s] get envs failed.err:%v", programName, err)
 			continue
 		}
 		keyValuesNum.Set("command", cmd)
 
 		procName, err := pne.Eval(originalProcName)
 		if err != nil {
-			logger.Errorf("program [%s] get envs failed，err:%v", programName, err)
+			logger.Errorf(context.TODO(), "program [%s] get envs failed，err:%v", programName, err)
 			continue
 		}
 		keyValuesNum.Set("process_name", procName)

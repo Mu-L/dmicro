@@ -1,7 +1,7 @@
 package drpc
 
 import (
-	"github.com/gogf/gf/container/gset"
+	"github.com/gogf/gf/v2/container/gset"
 	"github.com/osgochina/dmicro/utils/errors"
 	"github.com/osgochina/dmicro/utils/graceful"
 	"time"

@@ -1,9 +1,10 @@
 package process
 
 import (
+	"context"
 	"fmt"
-	"github.com/gogf/gf/container/gmap"
-	"github.com/gogf/gf/errors/gerror"
+	"github.com/gogf/gf/v2/container/gmap"
+	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/osgochina/dmicro/logger"
 	"sync"
 )
@@ -30,7 +31,7 @@ func (that *Manager) NewProcess(path string, args []string, environment []string
 	}
 	p.Manager = that
 	that.processes.Set(p.GetName(), p)
-	logger.Info("创建进程:", p.GetName())
+	logger.Info(context.TODO(), "创建进程:", p.GetName())
 	return p, nil
 }
 
@@ -43,7 +44,7 @@ func (that *Manager) NewProcessByEntry(entry *ProcEntry) (*Process, error) {
 	}
 	p.Manager = that
 	that.processes.Set(p.GetName(), p)
-	logger.Info("创建进程:", p.GetName())
+	logger.Info(context.TODO(), "创建进程:", p.GetName())
 	return p, nil
 }
 
@@ -57,14 +58,14 @@ func (that *Manager) NewProcessCmd(cmd string, environment ...[]string) (*Proces
 	}
 	p.Manager = that
 	that.processes.Set(p.GetName(), p)
-	logger.Info("创建进程:", p.GetName())
+	logger.Info(context.TODO(), "创建进程:", p.GetName())
 	return p, nil
 }
 
 // Add 添加进程到Manager
 func (that *Manager) Add(name string, proc *Process) {
 	that.processes.Set(name, proc)
-	logger.Info("添加进程:", name)
+	logger.Info(context.TODO(), "添加进程:", name)
 }
 
 // Remove 从Manager移除进程
@@ -73,7 +74,7 @@ func (that *Manager) Remove(name string) *Process {
 	if proc == nil {
 		return nil
 	}
-	logger.Info("remove process:", name)
+	logger.Info(context.TODO(), "remove process:", name)
 	return proc.(*Process)
 }
 
@@ -146,7 +147,7 @@ func (that *Manager) GetProcessInfo(name string) (*Info, error) {
 
 // StartProcess 启动指定进程
 func (that *Manager) StartProcess(name string, wait bool) (bool, error) {
-	logger.Infof("启动进程[%s]", name)
+	logger.Infof(context.TODO(), "启动进程[%s]", name)
 	proc := that.Find(name)
 	if proc == nil {
 		return false, fmt.Errorf("没有找到要启动的进程[%s]", name)
@@ -157,7 +158,7 @@ func (that *Manager) StartProcess(name string, wait bool) (bool, error) {
 
 // StopProcess 停止指定进程
 func (that *Manager) StopProcess(name string, wait bool) (bool, error) {
-	logger.Infof("结束进程[%s]", name)
+	logger.Infof(context.TODO(), "结束进程[%s]", name)
 	proc := that.Find(name)
 	if proc == nil {
 		return false, fmt.Errorf("没有找到要结束的进程[%s]", name)

@@ -3,7 +3,7 @@ package jsonproto
 import (
 	"bytes"
 	"encoding/binary"
-	"github.com/gogf/gf/encoding/gjson"
+	"github.com/gogf/gf/v2/encoding/gjson"
 	"github.com/osgochina/dmicro/drpc/proto"
 	"github.com/osgochina/dmicro/utils/dbuffer"
 	"io"

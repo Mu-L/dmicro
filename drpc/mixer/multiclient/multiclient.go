@@ -1,7 +1,7 @@
 package multiclient
 
 import (
-	"github.com/gogf/gf/container/gpool"
+	"github.com/gogf/gf/v2/container/gpool"
 	"github.com/osgochina/dmicro/drpc"
 	"github.com/osgochina/dmicro/drpc/internal"
 	"github.com/osgochina/dmicro/drpc/message"

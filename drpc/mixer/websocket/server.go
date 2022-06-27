@@ -2,7 +2,7 @@ package websocket
 
 import (
 	"context"
-	"github.com/gogf/gf/errors/gerror"
+	"github.com/gogf/gf/v2/errors/gerror"
 	"github.com/osgochina/dmicro/drpc"
 	"github.com/osgochina/dmicro/drpc/internal"
 	"github.com/osgochina/dmicro/drpc/mixer/websocket/jsonSubProto"

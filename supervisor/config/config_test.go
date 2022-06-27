@@ -1,14 +1,14 @@
 package config
 
 import (
-	"github.com/gogf/gf/debug/gdebug"
-	"github.com/gogf/gf/test/gtest"
+	"github.com/gogf/gf/v2/debug/gdebug"
+	"github.com/gogf/gf/v2/test/gtest"
 	"testing"
 )
 
 func TestEntry_Load(t *testing.T) {
 	gtest.C(t, func(t *gtest.T) {
-		teatPath := gdebug.TestDataPath()
+		teatPath := gdebug.CallerFilePath()
 		config := NewConfig(teatPath + "/test.conf")
 		err := config.Load()
 		t.Assert(err, nil)

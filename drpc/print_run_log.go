@@ -1,11 +1,12 @@
 package drpc
 
 import (
+	"context"
 	"encoding/json"
-	"github.com/gogf/gf/os/glog"
-	"github.com/gogf/gf/util/gconv"
-	"github.com/osgochina/dmicro/drpc/internal"
+	"github.com/gogf/gf/v2/os/glog"
+	"github.com/gogf/gf/v2/util/gconv"
 	"github.com/osgochina/dmicro/drpc/message"
+	"github.com/osgochina/dmicro/logger"
 	"strconv"
 	"time"
 )
@@ -25,14 +26,14 @@ const (
 )
 
 func enablePrintRunLog() bool {
-	return internal.GetLevel()&glog.LEVEL_DEBU > 0
+	return logger.GetLevel()&glog.LEVEL_DEBU > 0
 }
 
 //打印运行log
 func (that *session) printRunLog(realIP string, costTime time.Duration, input, output message.Message, logType int8) {
 	defer func() {
 		if err := recover(); err != nil {
-			internal.Error(err)
+			logger.Error(context.TODO(), err)
 		}
 	}()
 	var addr = that.RemoteAddr().String()
@@ -45,7 +46,7 @@ func (that *session) printRunLog(realIP string, costTime time.Duration, input, o
 	addr += "(real:" + realIP + ")"
 	var (
 		costTimeStr string
-		printFunc   = internal.Debugf
+		printFunc   = logger.Debugf
 	)
 	if that.endpoint.countTime {
 		if costTime >= that.endpoint.slowCometDuration {
@@ -59,13 +60,13 @@ func (that *session) printRunLog(realIP string, costTime time.Duration, input, o
 
 	switch logType {
 	case typePushLaunch:
-		printFunc(logFormatPushLaunch, addr, costTimeStr, output.ServiceMethod(), messageLogBytes(output, that.endpoint.printDetail))
+		printFunc(context.TODO(), logFormatPushLaunch, addr, costTimeStr, output.ServiceMethod(), messageLogBytes(output, that.endpoint.printDetail))
 	case typePushHandle:
-		printFunc(logFormatPushHandle, addr, costTimeStr, input.ServiceMethod(), messageLogBytes(input, that.endpoint.printDetail))
+		printFunc(context.TODO(), logFormatPushHandle, addr, costTimeStr, input.ServiceMethod(), messageLogBytes(input, that.endpoint.printDetail))
 	case typeCallLaunch:
-		printFunc(logFormatCallLaunch, addr, costTimeStr, output.ServiceMethod(), messageLogBytes(output, that.endpoint.printDetail), messageLogBytes(input, that.endpoint.printDetail))
+		printFunc(context.TODO(), logFormatCallLaunch, addr, costTimeStr, output.ServiceMethod(), messageLogBytes(output, that.endpoint.printDetail), messageLogBytes(input, that.endpoint.printDetail))
 	case typeCallHandle:
-		printFunc(logFormatCallHandle, addr, costTimeStr, input.ServiceMethod(), messageLogBytes(input, that.endpoint.printDetail), messageLogBytes(output, that.endpoint.printDetail))
+		printFunc(context.TODO(), logFormatCallHandle, addr, costTimeStr, input.ServiceMethod(), messageLogBytes(input, that.endpoint.printDetail), messageLogBytes(output, that.endpoint.printDetail))
 	}
 }
 

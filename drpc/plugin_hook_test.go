@@ -1,8 +1,8 @@
 package drpc_test
 
 import (
-	"github.com/gogf/gf/os/gtimer"
-	"github.com/gogf/gf/test/gtest"
+	"github.com/gogf/gf/v2/os/gtimer"
+	"github.com/gogf/gf/v2/test/gtest"
 	"github.com/osgochina/dmicro/drpc"
 	"net"
 	"testing"

@@ -7,7 +7,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/gogf/gf/util/guid"
+	"github.com/gogf/gf/v2/util/guid"
 	"github.com/osgochina/dmicro/logger"
 	"github.com/osgochina/dmicro/utils/mdns"
 	"io"

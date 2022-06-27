@@ -3,8 +3,8 @@ package securebody
 import (
 	"crypto/aes"
 	"fmt"
-	"github.com/gogf/gf/crypto/gmd5"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/crypto/gmd5"
+	"github.com/gogf/gf/v2/util/gconv"
 	"github.com/osgochina/dmicro/drpc"
 	"github.com/osgochina/dmicro/drpc/internal"
 	"github.com/osgochina/dmicro/drpc/message"

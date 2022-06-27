@@ -2,9 +2,9 @@ package config
 
 import (
 	"fmt"
-	"github.com/gogf/gf/container/gmap"
-	"github.com/gogf/gf/os/genv"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/container/gmap"
+	"github.com/gogf/gf/v2/os/genv"
+	"github.com/gogf/gf/v2/util/gconv"
 	"os"
 	"strings"
 )

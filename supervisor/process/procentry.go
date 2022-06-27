@@ -2,7 +2,7 @@ package process
 
 import (
 	"fmt"
-	"github.com/gogf/gf/util/gconv"
+	"github.com/gogf/gf/v2/util/gconv"
 	"github.com/osgochina/dmicro/supervisor/config"
 	"os/exec"
 	"strconv"

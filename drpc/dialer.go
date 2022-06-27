@@ -3,10 +3,10 @@ package drpc
 import (
 	"context"
 	"crypto/tls"
-	"github.com/gogf/gf/container/gtype"
-	"github.com/osgochina/dmicro/drpc/internal"
+	"github.com/gogf/gf/v2/container/gtype"
 	"github.com/osgochina/dmicro/drpc/netproto/kcp"
 	"github.com/osgochina/dmicro/drpc/netproto/quic"
+	"github.com/osgochina/dmicro/logger"
 	"github.com/osgochina/dmicro/utils"
 	"net"
 	"time"
@@ -93,9 +93,9 @@ func (that *Dialer) dialWithRetry(addr, sessID string, fn func(conn net.Conn) er
 	for redialTimes.Add(-1) > 0 {
 		time.Sleep(that.redialInterval)
 		if sessID == "" {
-			internal.Debugf("trying to redial... (network:%s, addr:%s)", that.network, addr)
+			logger.Debugf(context.TODO(), "trying to redial... (network:%s, addr:%s)", that.network, addr)
 		} else {
-			internal.Debugf("trying to redial... (network:%s, addr:%s, id:%s)", that.network, addr, sessID)
+			logger.Debugf(context.TODO(), "trying to redial... (network:%s, addr:%s, id:%s)", that.network, addr, sessID)
 		}
 		conn, err = that.dialOne(addr)
 		if err == nil {
